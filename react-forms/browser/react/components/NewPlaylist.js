@@ -1,9 +1,24 @@
 import React from 'react';
+import Songs from '../components/Songs';
 
-const NewPlaylist = (props) => {
-	let warningClassName = props.validInput ? 'hidden' : ''
+export default class NewPlaylist extends React.Component {
 
-  return (
+
+	componentDidMount () {
+		console.log('props', this.props);
+	    const selectPlaylist = this.props.selectPlaylist;
+	    const playlistId = this.props.selectedPlaylist.id;
+
+	    selectPlaylist(playlistId);
+  }
+
+
+  render () {
+
+  	const props = this.props;
+
+  	let warningClassName = props.validInput ? 'hidden' : ''
+  	return (
   	<div>
 			<div className={`alert alert-warning ${warningClassName}`}>Names must be between 1 and 16 characters</div>
 	    <form className="form-group" onSubmit={props.submitInputValue} style={{marginTop: '20px'}}>
@@ -16,6 +31,6 @@ const NewPlaylist = (props) => {
 	      <button className="btn btn-default" disabled={!props.validInput} >Add Playlist</button>
 	    </form>
   	</div>)
+  }
 
 }
-  export default NewPlaylist;
