@@ -17,7 +17,8 @@ export default class FilterableArtistsContainer extends React.Component {
 
     render () {
         let artists = this.props.artists;
-        let filteredArtists = artists.filter(artist => artist.includes(this.state.filterValue))
+        console.log('artists',artists)
+        let filteredArtists = artists.filter(artist => artist.name.includes(this.state.filterValue))
 
         return (
         <div>
