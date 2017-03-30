@@ -1,12 +1,12 @@
 import React from 'react';
 
 const NewPlaylist = (props) => {
-
- 
+	let warningClassName = props.validInput ? 'hidden' : ''
 
   return (
   	<div>
-	    <form className="form-group" onSubmit={props.submitInputValue}style={{marginTop: '20px'}}>
+			<div className={`alert alert-warning ${warningClassName}`}>Names must be between 1 and 16 characters</div>
+	    <form className="form-group" onSubmit={props.submitInputValue} style={{marginTop: '20px'}}>
 	      <input
 	        className="form-control"
 	        placeholder="Enter playlist name"  

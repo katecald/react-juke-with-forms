@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewPlaylist from './NewPlaylist';
+import axois from 'axios';
 
 
 export default class NewPlaylistContainer extends React.Component {
@@ -7,31 +8,33 @@ export default class NewPlaylistContainer extends React.Component {
         super(props)
         this.state = {
             inputValue: '',
-            validInput: false
+            validInput: true
         }
         this.setInputValue = this.setInputValue.bind(this);
         this.submitInputValue = this.submitInputValue.bind(this);
-        this.validateInputValue = this.validateInputValue.bind(this);
     }
 
     setInputValue(e) {
-        //e.preventDefault();
         this.setState({inputValue: e.target.value})
-        this.validateInputValue(e);
+        this.setState({validInput: true})
     }
 
     submitInputValue(e) {
+        let inputValue = this.state.inputValue
         e.preventDefault();
-        console.log('submit function',this.state.inputValue);
-        this.setState({inputValue: ''});
-    }
-
-    validateInputValue(e){
-        if (!e.target.value || e.target.value.length > 16) {
-            this.setState({validInput: false})
-            console.log(this.state.inputValue);
-        } else this.setState({validInput: true});
         
+         if (inputValue && inputValue.length <= 16) {
+            this.setState({validInput: true});
+            this.props.postNewPlaylist(inputValue)
+            // axois.post('/api/playlists', {name: inputValue})
+            // .then(res => res.data)
+            // .then(console.log)
+
+        } else {
+            this.setState({validInput: false})
+            
+        }
+        this.setState({inputValue: ''});
     }
 
     render () {
