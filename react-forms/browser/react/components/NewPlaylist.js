@@ -5,7 +5,6 @@ export default class NewPlaylist extends React.Component {
 
 
 	componentDidMount () {
-		console.log('props', this.props);
 	    const selectPlaylist = this.props.selectPlaylist;
 	    const playlistId = this.props.selectedPlaylist.id;
 

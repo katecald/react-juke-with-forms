@@ -142,7 +142,6 @@ export default class AppContainer extends Component {
       axios.post('/api/playlists', {name: playlistName})
       .then(res => res.data)
       .then(playlist => {
-        console.log(this)
         this.setState({
           playlists: [...this.state.playlists, playlist]
         })

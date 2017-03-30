@@ -26,13 +26,8 @@ export default class NewPlaylistContainer extends React.Component {
          if (inputValue && inputValue.length <= 16) {
             this.setState({validInput: true});
             this.props.postNewPlaylist(inputValue)
-            // axois.post('/api/playlists', {name: inputValue})
-            // .then(res => res.data)
-            // .then(console.log)
-
         } else {
-            this.setState({validInput: false})
-            
+            this.setState({validInput: false})    
         }
         this.setState({inputValue: ''});
     }
